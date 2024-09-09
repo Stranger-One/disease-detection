@@ -1,14 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { NavigationPnl } from './components'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { IoSearch } from "react-icons/io5";
+import getWeather from './data/getweather';
+import { setWeather } from './store/weatherSlice';
 
 
 const App = () => {
+  const dispatch = useDispatch()
   const navMenu = useSelector(state => state.global.navigationMenu)
   const location = useLocation()
   // console.log(location.pathname);
+
+  // setting current location weather data
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        console.log(latitude, longitude);
+        getWeather(latitude, longitude).then(resp =>{
+          dispatch(setWeather(resp))
+        })
+      },
+      (error) => {
+        setError("Unable to retrieve your location");
+      }
+    );
+  }, [])
 
   const handleSearch = (e) => {
     e.preventDefault()

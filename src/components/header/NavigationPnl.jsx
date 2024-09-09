@@ -1,7 +1,7 @@
 import React from 'react'
 import { HiMenuAlt2 } from "react-icons/hi";
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMenu } from '../../store/globalSlice';
+import { closeMenu, toggleMenu } from '../../store/globalSlice';
 import { RiDashboardLine } from "react-icons/ri";
 
 import { AiOutlineHome } from "react-icons/ai";
@@ -16,10 +16,13 @@ const NavigationPnl = () => {
   const navMenu = useSelector(state => state.global.navigationMenu)
   const dispatch = useDispatch()
 
-  console.log(navMenu);
+  // console.log(navMenu);
 
   const toggleNav = () => {
     dispatch(toggleMenu())
+  };
+  const closeNav = () => {
+    dispatch(closeMenu())
   };
 
 
@@ -49,7 +52,7 @@ const NavigationPnl = () => {
       <div className="">
         <ul className={`h-full  flex flex-col gap-2 p-2 relative bg-background z-[10000] ${navMenu ? 'w-60' : 'w-full'} shadowcss `}>
           {links.map((link, index) => (
-            <Link key={index} to={link.url} onClick={toggleNav} >
+            <Link key={index} to={link.url} onClick={closeNav} >
               <li className="flex items-center bg-surface p-1 rounded-lg gap-2 ">
                 <React.Fragment>
                   {link.icon}
