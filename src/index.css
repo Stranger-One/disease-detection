@@ -1,0 +1,63 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* .pxlarge{
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.pxmedium{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.pxsmall{
+    padding-left: 10px;
+    padding-right: 10px;
+} */
+
+
+.shadowcss {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.innershadowcss {
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bordercss {
+    border: 1px solid #000000;
+}
+
+
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+    width: 12px;
+    border-radius: 20px;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 10px #5a5a5a;
+}
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
